@@ -7,15 +7,16 @@ public class MadLibs {
         // Enter an adjective
         System.out.println("Enter an adjective:");
         Scanner scanner = new Scanner(System.in);
-        String adjective = scanner.nextLine();
+        String adjective = scanner.next();
 
         // Enter a season
         System.out.println("Enter a season:");
-        String season = scanner.nextLine();
+        String season = scanner.next();
 
         // Enter a number
         System.out.println("Enter a number:");
         int number = scanner.nextInt();
+        scanner.close();
 
         System.out.println("On a " +adjective+" "+season+ " day, I drink a minimum of "+number+ " cups of coffee.");
     }
