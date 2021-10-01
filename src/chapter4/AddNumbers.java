@@ -27,7 +27,7 @@ public class AddNumbers {
 
             System.out.println("The sum is " + sum);
 
-            System.out.println("Would you like to start over?");
+            System.out.println("Would you like to start over? Enter true or false");
             again = scanner.nextBoolean();
 
         } while(again);
