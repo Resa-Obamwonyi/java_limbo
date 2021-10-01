@@ -13,6 +13,7 @@ public class Rectangle {
         width = 0;
     }
 
+    // A constructor, Used to initialize an object, when created
     public Rectangle(double length, double width){
         setLength(length);
         setWidth(width); // can be set as this.width = width
