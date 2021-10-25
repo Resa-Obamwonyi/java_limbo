@@ -7,7 +7,7 @@ import java.util.List;
 public class ArrayStack {
 
     /**
-     * This is a class that implements a Stack using and Array
+     * This is a class that implements a Stack using an Array
      * @param args
      */
 
