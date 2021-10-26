@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.regex.*;
 
 public class BalancedParenthesis {
-//    Write a java code to check balanced parentheses in an expression using stack.
+//    Write a java code to check balanced parentheses in an expression using queue.stack.
 //    Given an expression containing characters ‘{‘,’}’,'(‘,’)’,'[‘,’]’. We have to write a code to check whether an input string has valid parentheses.
 
     public static void main(String[] args) {

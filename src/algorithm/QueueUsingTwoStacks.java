@@ -25,10 +25,10 @@ public class QueueUsingTwoStacks {
     public void dequeue(){
         if(stack2.isEmpty()){
             if(stack1.isEmpty()){
-                System.out.print("All stacks are currently empty, please enqueue to a stack");
+                System.out.print("All stacks are currently empty, please enqueue to a queue.stack");
             }
             else{
-                while (! stack1.isEmpty()){ // While stack one isn't empty, pop out of it and push to stack2 so it can then be dequeued.
+                while (! stack1.isEmpty()){ // While queue.stack one isn't empty, pop out of it and push to stack2 so it can then be dequeued.
                     stack2.push(stack1.pop());
                 }
             }

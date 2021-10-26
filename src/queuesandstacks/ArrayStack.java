@@ -1,4 +1,4 @@
-package stack;
+package queuesandstacks;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +52,7 @@ public class ArrayStack {
 
     public static Integer[] pop(Integer[] stackArray){
 
-            // first check if stack is empty
+            // first check if queue.stack is empty
             if(isEmpty(stackArray)){
                 printer(-1, "Popped");
             }
