@@ -3,7 +3,7 @@ package queuesandstacks;
 public class LinkedListStack {
 
     /**
-     * This is a class that implements a queue.stack using a linked list
+     * This is a class that implements a Stack(LIFO) using a linked list
      * The peek, pop and push arguments are represented.
      * @param args
      */
