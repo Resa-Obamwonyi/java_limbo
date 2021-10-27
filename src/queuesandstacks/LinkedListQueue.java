@@ -25,11 +25,11 @@ public class LinkedListQueue {
         transverse(queueList);
     }
 
-    public static boolean isEmpty(LinkedList queue) {
+    static boolean isEmpty(LinkedList queue) {
         return queue.head == null;
     }
 
-    public static void enqueue(LinkedList queue, int value){
+    static void enqueue(LinkedList queue, int value){
        Node new_node = new Node();
 
        if(isEmpty(queue)){
@@ -52,7 +52,7 @@ public class LinkedListQueue {
        queue.length++;
     }
 
-    public static void dequeue(LinkedList queue){
+    static void dequeue(LinkedList queue){
         if(isEmpty(queue)){
             System.out.println("Queue is empty");
         }
@@ -66,7 +66,7 @@ public class LinkedListQueue {
         }
     }
 
-    public static void transverse(LinkedList queue){
+    static  void transverse(LinkedList queue){
         int num = 1;
         Node current_head = new Node();
         current_head = queue.head;
