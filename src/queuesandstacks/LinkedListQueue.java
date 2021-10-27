@@ -9,7 +9,7 @@ public class LinkedListQueue {
         LinkedList queueList = new LinkedList();
         enqueue(queueList, 8);
         enqueue(queueList, 22);
-        isEmpty(queueList);
+        System.out.println(isEmpty(queueList));
         enqueue(queueList, 3);
         enqueue(queueList, 76);
         enqueue(queueList, 1);
@@ -19,7 +19,10 @@ public class LinkedListQueue {
         dequeue(queueList);
         System.out.println("------------------");
         transverse(queueList);
-
+        System.out.println("------------------");
+        dequeue(queueList);
+        System.out.println("------------------");
+        transverse(queueList);
     }
 
     public static boolean isEmpty(LinkedList queue) {
