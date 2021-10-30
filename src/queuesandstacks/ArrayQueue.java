@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class ArrayQueue {
+    /**
+     * Implements a queue using an array and arraylist
+     * Methods are queue, enqueue, isempty and a printer helper method
+     */
+
     public static void main(String[] args){
         Integer[] newQueue = new Integer[] {};
         dequeue(newQueue);
