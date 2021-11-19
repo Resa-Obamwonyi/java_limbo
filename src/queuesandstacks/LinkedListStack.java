@@ -8,94 +8,64 @@ public class LinkedListStack {
      * @param args
      */
 
-    public static void main(String[] args){
-        LinkedList newStack = new LinkedList();
-        System.out.println(isEmpty(newStack));
-        peek(newStack);
+    // create variable of linked list type
+    LinkedList stackList;
 
-        push(newStack, 8);
-        push(newStack, 17);
-        push(newStack, 11);
-        push(newStack, 34);
-        push(newStack, 67);
-
-        pop(newStack);
-        peek(newStack);
-        pop(newStack);
-        peek(newStack);
-        pop(newStack);
-        peek(newStack);
+    // initialize a new stack by setting it to an empty linked list
+    public void stack(){
+         this.stackList = new LinkedList();
     }
 
-    public static boolean isEmpty(LinkedList stackHead) {
-        return stackHead.head == null;
+   // size of the stack is equal to length of the linked list which will be continuously updated.
+    public int size(){
+        return this.stackList.length;
     }
 
-    public static void push(LinkedList stackList, int value){
-        // instantiate a new head
-        Node new_head = new Node();
-
-        if(isEmpty(stackList)){
-            new_head.data = value;
-            new_head.next = null;
-        }
-        else {
-            new_head.data = value;
-            new_head.next = stackList.head;
-        }
-
-        stackList.head = new_head;
-        stackList.length = stackList.length + 1;
+    // return as empty if head of the linked list points to null.
+    public boolean isEmpty(){
+        return this.stackList.head == null;
     }
 
-    public static void pop(LinkedList stackList){
-        if(isEmpty(stackList)){
-           printer(-1);
+    // to peek: simply return the data of the node item at the head of the stack
+    public int peek () {
+        if(isEmpty()){
+            return -1;
         }
-
-        else if(stackList.length == 1){
-            int popped_data = stackList.head.data;
-            stackList.head = null;
-            printer(popped_data);
-        }
-
-        else {
-            // get data to be popped
-            int popped_data = stackList.head.data;
-
-            // set the current head.next to a variable
-            Node initial_next = stackList.head.next;
-
-            // set the next of the current next to another variable
-            Node new_next = initial_next.next;
-
-            // set the head of the stackList to the current next
-            stackList.head = initial_next;
-
-            // set the next of the new head to the new next
-            stackList.head.next = new_next;
-
-            // reduce length of stack by 1
-            stackList.length = stackList.length - 1;
-
-            // send popped data to printer
-            printer(popped_data);
+        else{
+            return this.stackList.head.data;
         }
     }
 
-    public static void peek(LinkedList stackList) {
-        if (stackList.head != null) {
-            printer(stackList.head.data);
+    // to push, if stack is empty, set value and next respectively,
+    // else:,
+    public void push(int val) {
+        if(isEmpty()){
+            stackList.head = new Node();
+            stackList.head.data = val;
+            stackList.head.next = null;
+            stackList.length +=1;
         }else {
-            printer(-1);
+            Node currentHead = stackList.head;
+            Node newHead = new Node();
+            stackList.head = newHead;
+            newHead.data = val;
+            newHead.next = currentHead;
         }
     }
 
-    public static void printer(Integer val){
-        if(val==-1){
-            System.out.println("Stack is Empty");
-        }else{
-            System.out.println(val);
-        };
+    // to pop, return -1 if empty, else return data at current head,
+    // and set current head.next to new head then redirect current head.next pointer to null:
+    public Integer pop () {
+        if(isEmpty()){
+            return -1;
+        }else {
+            Node currentHead = stackList.head;
+            Node nextHead = currentHead.next;
+            int poppedData = currentHead.data;
+            currentHead.next = null;
+            stackList.head = nextHead;
+            return poppedData;
+        }
     }
+
 }

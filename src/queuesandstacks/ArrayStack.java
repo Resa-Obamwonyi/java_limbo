@@ -1,9 +1,5 @@
 package queuesandstacks;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class ArrayStack {
 
     /**
@@ -11,81 +7,72 @@ public class ArrayStack {
      * @param args
      */
 
-    public static void main (String[] args){
-        Integer[] newStack = new Integer[] {};
-        peek(newStack);
-        newStack = push(newStack, 4);
-        newStack = push(newStack, 9);
-        newStack = push(newStack, 11);
-        newStack = push(newStack, 5);
-        peek(newStack);
-        System.out.println("Current Stack Length: " + newStack.length);
-        newStack = pop(newStack);
-        System.out.println("Current Stack Length: " + newStack.length);
-        peek(newStack);
-        System.out.println("Current Stack Length: " + newStack.length);
-        newStack = pop(newStack);
-        System.out.println("Current Stack Length: " + newStack.length);
-        peek(newStack);
+    // initialize an array as stackArray
+    // initialize a head index
+    int[] stackArray;
+    int indexHead;
+
+    // initialize a stack by setting the array to a fixed length,
+    // and setting indexHead to a value
+    public void stack(int length){
+            this.stackArray = new int[length];
+            this.indexHead = length - 1;
+        }
+
+    // to get the size, return the difference between the stack origin length and the index of head
+    public int size(){
+        return this.stackArray.length - this.indexHead;
     }
 
-    public static boolean isEmpty(Integer[] stackArray){
-        return stackArray.length == 0;
+
+    // stack is empty if the value at indexHead is zero or -1
+    public boolean isEmpty(){
+        return stackArray[this.indexHead] == 0 || stackArray[this.indexHead] == -1;
     }
 
-    public static void peek(Integer[] stackArray){
-        if(isEmpty(stackArray)){
-            printer(-1, "Peeked");
+    // to peek: return the value of the element at indexHead in the list, if empty, return -1.
+    public int peek () {
+        if(isEmpty()){
+            return -1;
         }
         else{
-            printer(stackArray[0], "Peeked");
-        };
+           return this.stackArray[this.indexHead];
+        }
     }
 
-    public static void printer(Integer val, String action){
-        if(val==-1){
-            System.out.println("Stack is Empty");
-        }else{
-            System.out.println(action+ " "+ val);
-        };
+
+    public void push(int val) {
+        // if array is empty, set new value to first index (counting from top to 0)
+        if (isEmpty() ) {
+            stackArray[this.indexHead] = val;
+        }
+        // else if index is greater than 0 and less than length of the array,
+        // set value to the next index after current index head
+        // decrement head by 1
+        else if ( this.indexHead > 0 && this.indexHead < stackArray.length) {
+            stackArray[this.indexHead - 1 ] = val;
+            this.indexHead = this.indexHead - 1;
+        }
+        // else throw exception that stack is full
+        else{
+            throw new ArrayIndexOutOfBoundsException("Stack is full");
+        }
     }
 
-    public static Integer[] pop(Integer[] stackArray){
+        public Integer pop () {
+            // get the value to be popped
+            int val = stackArray[this.indexHead];
 
-            // first check if queue.stack is empty
-            if(isEmpty(stackArray)){
-                printer(-1, "Popped");
+            // set popped value to -1 (this is how we pop)
+            stackArray[this.indexHead] = -1;
+
+            // if the current head is not the root head, i.e. we are not popping the first item in the array,
+            // set new head to the previous index before the popped index
+            if (this.indexHead != stackArray.length - 1) {
+                this.indexHead = this.indexHead + 1;
             }
-                // get value to be popped
-                int popped_value = stackArray[0];
+            return val;
 
-                // convert to array list
-                List<Integer> stackArrayList = new ArrayList<Integer>();
-                Collections.addAll(stackArrayList, stackArray);
-
-                // remove first item
-                stackArrayList.remove(0);
-
-                // convert back to list
-                Integer[] newStackArray = new Integer[stackArrayList.size()];
-                newStackArray = stackArrayList.toArray(newStackArray);
-
-                printer(popped_value, "Popped");
-                return newStackArray;
+        }
 
     }
-
-    public static Integer[] push(Integer[] stackArray, Integer newValue){
-        // convert to array List
-        List<Integer> stackArrayList = new ArrayList<Integer>();
-        Collections.addAll(stackArrayList, stackArray);
-
-        //Add new item
-        stackArrayList.add(0, newValue);
-
-        Integer[] newStackArray;
-        newStackArray = stackArrayList.toArray(stackArray);
-        return newStackArray;
-    }
-
-}
