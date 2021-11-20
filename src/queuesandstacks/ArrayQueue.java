@@ -77,12 +77,15 @@ public class ArrayQueue {
         queueArray[this.indexHead] = -1;
 
         // if the current head is not the root head, i.e. we are not dequeueing the first item in the queue,
-        // set new head to the next index after the dequeued index
+        // and the current head is not the last index, set new head to the next index after the dequeued index
         // else if we are dequeueing the one and only element in the array, set indexHead and indexTail to -1 to
         // indicate empty
-        if (this.indexHead != this.indexTail) {
+        if (this.indexHead != this.indexTail && this.indexHead != this.queueArray.length - 1) {
             this.indexHead = this.indexHead + 1;
-        }else{
+        } else if(this.indexHead == this.queueArray.length -1){
+            this.indexHead = 0;
+        }
+        else{
             this.indexHead = -1;
             this.indexTail = -1;
         }

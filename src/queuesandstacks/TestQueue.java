@@ -27,12 +27,15 @@ public class TestQueue {
         queue.enqueue(88); // [1, 46, 88, -1, 31]
         System.out.println("CurrentHeadIndex: "+queue.indexHead +", CurrentTailIndex: "+queue.indexTail); // 4, 2
         System.out.println("QueueSize: "+ queue.size()); // 4
-        // BUG HERE
+
+        // FIXED THE BUG HERE, IT WAS AN EDGE CASE
         System.out.println(queue.dequeue()); // returns 31, queue = [1, 46, 88, -1, -1]
         System.out.println("CurrentHeadIndex: "+queue.indexHead +", CurrentTailIndex: "+queue.indexTail); // 0, 2
-
-
-
-
+        System.out.println(queue.dequeue()); // returns 1, queue = [-1, 46, 88, -1, -1]
+        System.out.println("CurrentHeadIndex: "+queue.indexHead +", CurrentTailIndex: "+queue.indexTail); // 1, 2
+        System.out.println(queue.dequeue()); // returns 46, queue = [-1, -1, 88, -1, -1]
+        System.out.println(queue.dequeue()); // returns 88, queue = [-1, -1, -1, -1, -1]
+        System.out.println("QueueSize: "+ queue.size()); // 0
+        System.out.println(queue.isEmpty()); // returns true
     }
     }
