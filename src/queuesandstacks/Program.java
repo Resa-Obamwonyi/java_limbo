@@ -34,7 +34,7 @@ public class Program {
         System.out.println("current head is: " + stack.indexHead);
         System.out.println("peeked: " + stack.peek());
 
-        // testing linkedlist as stack
+        // testing linked list as stack
         LinkedListStack stack2 = new LinkedListStack();
         stack2.stack();
 

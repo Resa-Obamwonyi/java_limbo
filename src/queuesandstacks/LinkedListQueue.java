@@ -4,44 +4,33 @@ public class LinkedListQueue {
     /**
      * This class implements a Queue (FIFO) using a linked list
      */
+    LinkedList queueLList;
 
-    public static void main(String args[]){
-        LinkedList queueList = new LinkedList();
-        enqueue(queueList, 8);
-        enqueue(queueList, 22);
-        System.out.println(isEmpty(queueList));
-        enqueue(queueList, 3);
-        enqueue(queueList, 76);
-        enqueue(queueList, 1);
-        enqueue(queueList, 9);
-        transverse(queueList);
-        System.out.println("------------------");
-        dequeue(queueList);
-        System.out.println("------------------");
-        transverse(queueList);
-        System.out.println("------------------");
-        dequeue(queueList);
-        System.out.println("------------------");
-        transverse(queueList);
+    public void queue(){
+        this.queueLList = new LinkedList();
+        this.queueLList.head = null;
     }
 
-    static boolean isEmpty(LinkedList queue) {
-        return queue.head == null;
+    public boolean isEmpty() {
+        return this.queueLList.head == null;
     }
 
-    static void enqueue(LinkedList queue, int value){
+    public int size(){
+        return this.queueLList.length;
+    }
+
+    public void enqueue(int value){
        Node new_node = new Node();
 
-       if(isEmpty(queue)){
-           queue.head = new_node;
-           queue.head.data = value;
-           queue.head.next = null;
+       if(isEmpty()){
+           this.queueLList.head = new_node;
+           this.queueLList.head.data = value;
+           this.queueLList.head.next = null;
        }else{
            int num = 1;
-           Node current_head = new Node();
-           current_head = queue.head;
+           Node current_head = this.queueLList.head;
 
-           while(num < queue.length){
+           while(num < this.queueLList.length){
                current_head = current_head.next;
                num++;
            }
@@ -49,31 +38,19 @@ public class LinkedListQueue {
            new_node.next = null;
            current_head.next = new_node;
        }
-       queue.length++;
+        this.queueLList.length ++;
     }
 
-    static void dequeue(LinkedList queue){
-        if(isEmpty(queue)){
+    public void dequeue(){
+        if(isEmpty()){
             System.out.println("Queue is empty");
         }
         else{
-            Node prev_head = new Node();
-            prev_head = queue.head;
-            queue.head = prev_head.next;
+            Node prev_head = this.queueLList.head;
+            this.queueLList.head = prev_head.next;
             prev_head.next = null;
-            queue.length--;
+            this.queueLList.length--;
             System.out.println("Dequeued: " + prev_head.data);
-        }
-    }
-
-    static  void transverse(LinkedList queue){
-        int num = 1;
-        Node current_head = new Node();
-        current_head = queue.head;
-        while(num <= queue.length && current_head != null){
-            System.out.println(current_head.data);
-            current_head = current_head.next;
-            num++;
         }
     }
 }

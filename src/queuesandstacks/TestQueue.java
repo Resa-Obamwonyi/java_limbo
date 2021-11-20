@@ -2,6 +2,9 @@ package queuesandstacks;
 
 public class TestQueue {
     public static void main(String[] args) {
+
+        System.out.println("------------ARRAY IMPLEMENTATION-------");
+        // -----ARRAY QUEUE IMPLEMENTATION TEST GROUND----
         ArrayQueue queue = new ArrayQueue();
 
         queue.queue(5); // indices: 0,1,2,3,4
@@ -37,5 +40,22 @@ public class TestQueue {
         System.out.println(queue.dequeue()); // returns 88, queue = [-1, -1, -1, -1, -1]
         System.out.println("QueueSize: "+ queue.size()); // 0
         System.out.println(queue.isEmpty()); // returns true
+
+
+        System.out.println("------------LINKED LIST IMPLEMENTATION-------");
+
+        // -----LINKED LIST QUEUE IMPLEMENTATION TEST GROUND----
+        LinkedListQueue newQueue = new LinkedListQueue();
+        newQueue.queue();
+        System.out.println(newQueue.isEmpty()); // returns true
+        newQueue.enqueue(45); // 45
+        newQueue.enqueue(13);  // 45-->13
+        System.out.println(newQueue.isEmpty()); // returns false
+        newQueue.dequeue(); // returns 45, queue = 13
+        newQueue.enqueue(56); // 13-->56
+        newQueue.enqueue(4); // 13-->56-->4
+        newQueue.enqueue(81); // 13-->56-->4-->81
+        newQueue.dequeue(); // 13
+        System.out.println(newQueue.size()); // 3
     }
     }
